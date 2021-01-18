@@ -27,13 +27,13 @@ public final class Form_data extends javax.swing.JFrame {
     }
     
     public void select(){
-        koneksi classDb_Koneksi = new koneksi();
+        Db_Koneksi classKoneksi = new Db_Koneksi();
         try{
-            con = koneksi.getKoneksi();
+            con = Db_Koneksi.getKoneksi();
             st = con.createStatement();
             rs = st.executeQuery("SELECT * FROM tblData");
             while(rs.next()){
-                String[] row = {rs.getString(1),rs.getString(2),rs.getString(3)};
+                String[] row = {rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)};
                 model.addRow(row);
             }
             table.setModel(model);
