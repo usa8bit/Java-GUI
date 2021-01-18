@@ -1,35 +1,33 @@
-package Koneksi;
+package app_db;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author usaamah
  */
-public final class Form_data extends javax.swing.JFrame {
+public final class data extends javax.swing.JFrame {
     public Connection con;
     public Statement st;
     public ResultSet rs;
     public DefaultTableModel model;
+
     /**
-     * Creates new form Form_data
+     * Creates new form data
      */
-    public Form_data() {
+    public data() {
         initComponents();
-        String[] header = {"ID", "Nama", "Kelamin", "kota"};
+        String[] header = {"ID", "Nama", "Jenis Kelamin", "kota"};
         model = new DefaultTableModel(header,0);
         table.setModel(model);
         select();
     }
     
     public void select(){
-        Db_Koneksi classKoneksi = new Db_Koneksi();
+        Db classKoneksi = new Db();
         try{
-            con = Db_Koneksi.getKoneksi();
+            con = Db.getKoneksi();
             st = con.createStatement();
             rs = st.executeQuery("SELECT * FROM tblData");
             while(rs.next()){
@@ -73,7 +71,7 @@ public final class Form_data extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,20 +100,20 @@ public final class Form_data extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Form_data.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(data.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Form_data.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(data.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Form_data.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(data.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Form_data.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(data.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Form_data().setVisible(true);
+                new data().setVisible(true);
             }
         });
     }

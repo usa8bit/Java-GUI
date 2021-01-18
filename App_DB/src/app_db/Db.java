@@ -1,20 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Koneksi;
+package app_db;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author usaamah
  */
-public class Db_Koneksi {
+public class Db {
     private static Connection conn;
       public static Connection getKoneksi( ){
                String host       = "jdbc:mysql://localhost/Karyawan",
